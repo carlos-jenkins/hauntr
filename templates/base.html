@@ -7,6 +7,12 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8;charset=utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
+        <!-- Metadata -->
+        <meta name="author" property="author" content="{{ AUTHOR }}" />
+        {% if SITESUBTITLE %}
+            <meta name="description" property="description" content="{{ SITESUBTITLE }}" />
+        {% endif %}
+
         <!-- Kura's pelican-fontawesome -->
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -24,16 +30,25 @@
 <body class="post-template">
     <header class="site-head">
         <h1 class="blog-title"><a href="{{ SITEURL }}">{{ SITENAME }}</a></h1>
-        {% if SITESUBTITLE %}
-            <h2 class="blog-description">{{ SITESUBTITLE }}</h2>
-        {% endif %}
+        <h2 class="blog-description">
+            <a href="{{ SITEURL }}/contact/">Contact</a> | <a href="{{ SITEURL }}/software/">Software</a>
+        </h2>
     </header>
     <main id="content" class="content" role="main">
         {% block content %}{% endblock %}
     </main>
     <footer class="site-footer">
+
+        {% if FEED_RSS %}
+            <a class="subscribe icon-feed" href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}"><span class="tooltip">RSS</span></a>
+        {% endif %}
+
+        {% if FEED_ATOM %}
+            <a class="subscribe icon-feed" href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}"><span class="tooltip">Atom</span></a>
+        {% endif %}
+
         <div class="inner">
-            <section class="copyright">Copyright {{ SITENAME }}</section>
+            <section class="copyright">Copyright {{ AUTHOR }}</section>
             <section class="poweredby">Powered by the <a href="https://kura.io/hauntr/">Hauntr</a> theme.</section>
         </div>
     </footer>

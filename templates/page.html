@@ -5,6 +5,11 @@
     <h1 class="post-title">
         <a href="{{ SITEURL }}/{{ page.url }}" rel="bookmark" title="Permalink to {{ page.title|striptags }}">{{ page.title }}</a>
     </h1>
+    {% if GITHUB_SITE_URL %}
+    <span class="post-meta">
+        <a href="{{ GITHUB_SITE_URL }}{{ page.get_relative_source_path() }}">View on <span class="fa fa-github"></span></a>
+    </span>
+    {% endif %}
     <section class="post-content">{{ page.content }}</section>
 </article>
 {% endblock %}
