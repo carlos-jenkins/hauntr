@@ -5,6 +5,12 @@
     <span class="post-meta">
         <time datetime="{{ article.locale_date }}">{{ article.locale_date }}</time>
         in <a href="{{ SITEURL }}/{{ article.category.url }}/">{{ article.category }}</a>
+        {% if article.tags %}
+            with tags:
+            {% for tag in article.tags %}
+                <a href="{{ SITEURL }}/{{ tag.url}}/">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        {% endif %}
     </span>
     <h1 class="post-title">
         <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
@@ -14,13 +20,6 @@
         <a href="{{ GITHUB_SITE_URL }}{{ article.get_relative_source_path() }}">View on <span class="fa fa-github"></span></a>
     </span>
     {% endif %}
-    <span class="post-meta">
-        {% if article.tags %}
-            {% for tag in article.tags %}
-                <a href="{{ SITEURL }}/{{ tag.url}}/">{{ tag }}</a>
-            {% endfor %}
-        {% endif %}
-    </span>
     <section class="post-content">{{ article.content }}</section>
     <footer class="post-footer">
         {% include 'share.html' %}

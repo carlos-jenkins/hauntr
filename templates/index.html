@@ -6,15 +6,14 @@
             <span class="post-meta">
                 <time datetime="{{ article.locale_date }}">{{ article.locale_date }}</time>
                 in <a href="{{ SITEURL }}/{{ article.category.url }}/">{{ article.category }}</a>
-            </span>
-            <h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
-            <span class="post-meta">
                 {% if article.tags %}
+                    with tags:
                     {% for tag in article.tags %}
-                        <a href="{{ SITEURL }}/{{ tag.url}}/">{{ tag }}</a>
+                        <a href="{{ SITEURL }}/{{ tag.url}}/">{{ tag }}</a>{% if not loop.last %}, {% endif %}
                     {% endfor %}
                 {% endif %}
             </span>
+            <h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
         </header>
         <section class="post-excerpt">
             {{ article.summary }}
