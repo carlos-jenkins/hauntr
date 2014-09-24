@@ -693,7 +693,7 @@ h1.blog-title a:hover {
 }
 
 img.pypin {
-    margin: 0;
+    margin: 0 5px 0 0;
     padding: 0;
     width: auto;
     display: inline;
